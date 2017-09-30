@@ -1,0 +1,264 @@
+DB2 Universal Database Version 11.1, 5622-044 (c) Copyright IBM Corp. 1991, 2015
+Licensed Material - Program Property of IBM
+IBM DATABASE 2 Explain Table Format Tool
+
+
+
+******************** EXPLAIN INSTANCE ********************
+
+DB2_VERSION:       11.01.0
+FORMATTED ON DB:   SAMPLE
+SOURCE_NAME:       SYSSH200
+SOURCE_SCHEMA:     NULLID  
+SOURCE_VERSION:      
+EXPLAIN_TIME:      2017-08-06-17.30.33.280000
+EXPLAIN_REQUESTER: DB2ADMIN
+
+Database Context:
+----------------
+	Parallelism:          None
+	CPU Speed:            8.266024e-008
+	Comm Speed:           0
+	Buffer Pool size:     250
+	Sort Heap size:       256
+	Database Heap size:   600
+	Lock List size:       4096
+	Maximum Lock List:    22
+	Average Applications: 1
+	Locks Available:      28835
+
+Package Context:
+---------------
+	SQL Type:           Dynamic
+	Optimization Level: 5
+	Blocking:           Block All Cursors
+	Isolation Level:    Cursor Stability
+
+
+
+---------------- STATEMENT 1  SECTION 4 ----------------
+	QUERYNO:       1
+	QUERYTAG:                          
+	Statement Type:   Select
+	Updatable:        No
+	Deletable:        No
+	Query Degree:     1
+
+Original Statement:
+------------------
+select 
+  bpname 
+from 
+  syscat.bufferpools
+
+
+Optimized Statement:
+-------------------
+SELECT 
+  Q1.BPNAME AS "BPNAME" 
+FROM 
+  SYSIBM.SYSBUFFERPOOLS AS Q1
+
+Access Plan:
+-----------
+	Total Cost: 		0.0034452
+	Query Degree:		1
+
+
+       Rows 
+      RETURN
+      (   1)
+       Cost 
+        I/O 
+        |
+         1 
+      IXSCAN
+      (   2)
+     0.0034452 
+         0 
+        |
+         1 
+  INDEX: SYSIBM  
+ INDBUFFERPOOLS01
+        Q1
+
+
+
+Extended Diagnostic Information:
+--------------------------------
+
+No extended Diagnostic Information for this statement.
+
+
+Plan Details:
+-------------
+
+
+	1) RETURN: (Return Result)
+		Cumulative Total Cost: 		0.0034452
+		Cumulative CPU Cost: 		41679
+		Cumulative I/O Cost: 		0
+		Cumulative Re-Total Cost: 	0.000513981
+		Cumulative Re-CPU Cost: 	6218
+		Cumulative Re-I/O Cost: 	0
+		Cumulative First Row Cost: 	0.00330294
+		Estimated Bufferpool Buffers: 	1
+
+		Arguments:
+		---------
+		BLDLEVEL: (Build level)
+			DB2 v11.1.0.1527 : s1606081100
+		HEAPUSE : (Maximum Statement Heap Usage)
+			96 Pages
+		PLANID  : (Access plan identifier)
+			7e9d343f13e3d8e1
+		PREPTIME: (Statement prepare time)
+			        45 milliseconds
+		SEMEVID : (Semantic environment identifier)
+			0000000000000001
+		STMTHEAP: (Statement heap size)
+			8192
+		STMTID  : (Normalized statement identifier)
+			88bd38c069dd4444
+
+		Input Streams:
+		-------------
+			2) From Operator #2
+
+				Estimated number of rows: 	1
+				Number of columns: 		1
+				Subquery predicate ID: 		Not Applicable
+
+				Column Names:
+				------------
+				+Q2.BPNAME
+
+
+	2) IXSCAN: (Index Scan)
+		Cumulative Total Cost: 		0.0034452
+		Cumulative CPU Cost: 		41679
+		Cumulative I/O Cost: 		0
+		Cumulative Re-Total Cost: 	0.000513981
+		Cumulative Re-CPU Cost: 	6218
+		Cumulative Re-I/O Cost: 	0
+		Cumulative First Row Cost: 	0.00330294
+		Estimated Bufferpool Buffers: 	1
+
+		Arguments:
+		---------
+		MAXPAGES: (Maximum pages for prefetch)
+			ALL
+		PREFETCH: (Type of Prefetch)
+			NONE                
+		ROWLOCK : (Row Lock intent)
+			SHARE (CS/RS)
+		SCANDIR : (Scan Direction)
+			FORWARD
+		TABLOCK : (Table Lock intent)
+			INTENT SHARE
+		TBISOLVL: (Table access Isolation Level)
+			CURSOR STABILITY
+
+		Input Streams:
+		-------------
+			1) From Object SYSIBM.INDBUFFERPOOLS01
+
+				Estimated number of rows: 	1
+				Number of columns: 		2
+				Subquery predicate ID: 		Not Applicable
+
+				Column Names:
+				------------
+				+Q1.$RID$+Q1.BPNAME
+
+
+		Output Streams:
+		--------------
+			2) To Operator #1
+
+				Estimated number of rows: 	1
+				Number of columns: 		1
+				Subquery predicate ID: 		Not Applicable
+
+				Column Names:
+				------------
+				+Q2.BPNAME
+
+
+Objects Used in Access Plan:
+---------------------------
+
+	Schema: SYSIBM  
+	Name: 	SYSBUFFERPOOLS
+	Type: 	Table (reference only)
+
+	Schema: SYSCAT  
+	Name: 	BUFFERPOOLS
+	Type: 	View (reference only)
+
+	Schema: SYSIBM  
+	Name: 	INDBUFFERPOOLS01
+	Type: 	Index
+			Time of creation: 		2016-11-20-11.13.31.995000
+			Last statistics update: 	2017-05-04-10.42.53.792000
+			Number of columns: 		2
+			Number of rows: 		1
+			Width of rows: 			-1
+			Number of buffer pool pages: 	1
+			Distinct row values: 		Yes
+			Tablespace name: 		SYSCATSPACE
+			Tablespace overhead: 		6.725000
+			Tablespace transfer rate: 	0.080000
+			Source for statistics: 		Single Node
+			Prefetch page count: 		4
+			Container extent page count: 	4
+			Index clustering statistic: 	100.000000
+			Index leaf pages: 		1
+			Index tree levels: 		1
+			Index full key cardinality: 	1
+			Index first key cardinality: 	1
+			Index first 2 keys cardinality: 1
+			Index first 3 keys cardinality: -1
+			Index first 4 keys cardinality: -1
+			Index sequential pages: 	0
+			Index page density: 		0
+			Index avg sequential pages: 	0
+			Index avg gap between sequences:0
+			Index avg random pages: 	1
+			Fetch avg sequential pages: 	-1
+			Fetch avg gap between sequences:-1
+			Fetch avg random pages: 	-1
+			Index RID count: 		1
+			Index deleted RID count: 	0
+			Index empty leaf pages: 	0
+			Base Table Schema: 		SYSIBM  
+			Base Table Name: 		SYSBUFFERPOOLS
+			Columns in index:
+				BPNAME(A)
+				NGNAME(A)
+			Null keys: 			Yes
+
+
+Base Table For Index Not Already Shown:
+---------------------------------------
+
+	Schema: SYSIBM  
+	Name: 	SYSBUFFERPOOLS
+			Time of creation: 		2016-11-20-11.13.31.995000
+			Last statistics update: 	2017-05-04-10.42.53.792000
+			Number of data partitions: 	1
+			Number of columns: 		7
+			Number of rows: 		1
+			Number of pages: 		1
+			Number of pages with rows: 	1
+			Number of meta-data pages: 	0
+			Table overflow record count: 	0
+			Indexspace name: 		SYSCATSPACE
+			Tablespace name: 		SYSCATSPACE
+			Tablespace overhead: 		-1.000000
+			Tablespace transfer rate: 	-1.000000
+			Prefetch page count: 		-1
+			Container extent page count: 	4
+
+			Long tablespace name: 		SYSCATSPACE
+
